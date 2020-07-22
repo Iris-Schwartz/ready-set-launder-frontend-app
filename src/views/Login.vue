@@ -1,16 +1,19 @@
 <template>
   <div class="login">
     <form v-on:submit.prevent="submit()">
-      <div class="form-control">
-        <br>
+      <h1>Login</h1>
+      <ul>
+        <li class="text-danger" v-for="error in errors">{{ error }}</li>
+      </ul>
+      <div class="form-group">
         <label>Email: </label>
-        <input type="email" v-model="email">
+        <input type="email" class="form-control" v-model="email">
       </div>
-      <div class="form-control">
+      <div class="form-group">
         <label>Password: </label>
-        <input type="password" v-model="password">
+        <input type="password" class="form-control" v-model="password">
       </div>
-      <button v-on:click="submit()">Submit</button>
+      <input type="submit" class="btn btn-primary" value="Submit">
     </form>
   </div>
 </template>
@@ -19,27 +22,33 @@
 import axios from "axios";
 
 export default {
-  data: function() {
+  data: function () {
     return {
       errors: [],
       email: "",
-      password: ""
+      password: "",
     };
   },
   methods: {
-    submit: function() {
+    submit: function () {
       var params = {
         email: this.email,
-        password: this.password
+        password: this.password,
       };
-      axios.post("/api/sessions", params).then(response => {
-        axios.defaults.headers.common["Authorization"] =
-          "Bearer " + response.data.jwt;
-        localStorage.setItem("jwt", response.data.jwt);
-        console.log();
-        this.$router.push("/home");
-      });
-    }
-  }
+      axios
+        .post("/api/sessions", params)
+        .then((response) => {
+          axios.defaults.headers.common["Authorization"] =
+            "Bearer " + response.data.jwt;
+          localStorage.setItem("jwt", response.data.jwt);
+          this.$router.push("/");
+        })
+        .catch((error) => {
+          this.errors = ["Invalid email or password."];
+          this.email = "";
+          this.password = "";
+        });
+    },
+  },
 };
 </script>

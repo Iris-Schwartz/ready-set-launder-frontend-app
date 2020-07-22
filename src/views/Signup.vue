@@ -1,26 +1,27 @@
 <template>
   <div class="signup">
-    <ul>
-      <li v-for="error in errors"> {{ error }} </li>
-    </ul>
     <form v-on:submit.prevent="submit()">
+      <h1>Signup</h1>
+      <ul>
+        <li class="text-danger" v-for="error in errors">{{ error }}</li>
+      </ul>
       <div class="form-group">
         <label>Username: </label>
-        <input type="text" v-model="username">
+        <input type="text" class="form-control" v-model="username">
       </div>
       <div class="form-group">
         <label>Email: </label>
-        <input type="email" v-model="email">
+        <input type="email" class="form-control" v-model="email">
       </div>
       <div class="form-group">
         <label>Password: </label>
-        <input type="password" v-model="password">
+        <input type="password" class="form-control" v-model="password">
       </div>
       <div class="form-group">
         <label>Password Confirmation: </label>
-        <input type="password" v-model="passwordConfirmation">
+        <input type="password" class="form-control" v-model="passwordConfirmation">
       </div>
-      <button v-on:click="submit()">Submit</button>
+      <input type="submit" class="btn btn-primary" value="Submit">
     </form>
   </div>
 </template>
@@ -29,35 +30,35 @@
 import axios from "axios";
 
 export default {
-  data: function() {
+  data: function () {
     return {
       errors: [],
       username: "",
       email: "",
       password: "",
-      passwordConfirmation: ""
+      passwordConfirmation: "",
     };
   },
-  created: function() {},
+  created: function () {},
   methods: {
-    submit: function() {
+    submit: function () {
       var params = {
         username: this.username,
         email: this.email,
         password: this.password,
-        password_confirmation: this.passwordConfirmation
+        password_confirmation: this.passwordConfirmation,
       };
       axios
         .post("/api/users", params)
-        .then(response => {
+        .then((response) => {
           console.log("New user created!", response.data);
           this.$router.push("/login");
         })
-        .catch(error => {
+        .catch((error) => {
           this.errors = error.response.data.errors;
         });
-    }
-  }
+    },
+  },
 };
 </script>
 
