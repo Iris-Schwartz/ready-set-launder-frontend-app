@@ -5,6 +5,7 @@ import Signup from '../views/Signup.vue'
 import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import ItemsIndex from '../views/ItemsIndex.vue'
+import ItemsNew from '../views/ItemsNew.vue'
 
 Vue.use(VueRouter)
 
@@ -33,6 +34,11 @@ const routes = [
     path: '/items',
     name: 'items-index',
     component: ItemsIndex
+  },
+  {
+    path: '/items/new',
+    name: 'items-new',
+    component: ItemsNew
   }
 ]
 
