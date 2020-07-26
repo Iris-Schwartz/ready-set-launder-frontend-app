@@ -1,7 +1,7 @@
 <template>
   <div class="items-new">
     <form v-on:submit.prevent="createItem()">
-      <h1>Add Clothing Item</h1>
+      <h1>Add Your Clothing Item!</h1>
       <ul>
         <li v-for="error in errors">{{ error }}</li>
       </ul>
