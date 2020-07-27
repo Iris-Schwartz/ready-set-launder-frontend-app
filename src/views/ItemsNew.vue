@@ -1,7 +1,7 @@
 <template>
   <div class="items-new">
     <form v-on:submit.prevent="createItem()">
-      <h1>Add Your Clothing Item!</h1>
+      <h2>Add Clothing Item to Inventory!</h2>
       <ul>
         <li v-for="error in errors">{{ error }}</li>
       </ul>
@@ -16,14 +16,20 @@
         </select>
       </div>
       <div class="form-group">
-        <label>Select Wash Setting: </label>
-        <input type="number" v-model="washSettingId">
-      </div> 
-      <div class="form-group">
-        <label>Select Dry Setting: </label>
-        <input type="number" v-model="drySettingId">
+        <p>Select Wash Setting: </p>
+        <div v-for="washSetting in washSettings">
+          <input type="radio" v-model="washSettingId" :id="washSetting.id" :value="washSetting.id">
+          <label :for="washSetting.name">{{ washSetting.name }}</label>
+        </div>
       </div>
-       <input type="submit" class="btn btn-primary" value="Submit">
+      <div class="form-group">
+        <p>Select Dry Setting: </p>
+        <div v-for="drySetting in drySettings">
+          <input type="radio" v-model="drySettingId" :value="drySetting.id" :id="drySetting.id">
+          <label :for="drySetting.name">{{ drySetting.name }}</label>
+        </div>
+      </div>
+      <input type="submit" class="bt btn-primary" value="Submit">
     </form>
   </div>
 </template>
@@ -39,13 +45,23 @@ export default {
       drySettingId: null,
       categories: [],
       categoryId: "",
+      washSettings: [],
+      drySettings: [],
       errors: [],
     };
   },
   created: function () {
-    axios.get("api/categories").then((response) => {
+    axios.get("/api/categories").then((response) => {
       console.log(response.data);
       this.categories = response.data;
+    });
+    axios.get("/api/wash_settings").then((response) => {
+      console.log(response.data);
+      this.washSettings = response.data;
+    });
+    axios.get("/api/dry_settings").then((response) => {
+      console.log(response.data);
+      this.drySettings = response.data;
     });
   },
   methods: {
