@@ -4,8 +4,9 @@ import Home from '../views/Home.vue'
 import Signup from '../views/Signup.vue'
 import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
-import ItemsIndex from '../views/ItemsIndexvue'
+import ItemsIndex from '../views/ItemsIndex.vue'
 import ItemsNew from '../views/ItemsNew.vue'
+import ItemsWash from '../views/ItemsWash.vue'
 
 Vue.use(VueRouter)
 
@@ -40,6 +41,11 @@ const routes = [
     name: 'items-new',
     component: ItemsNew
   },
+  {
+    path: '/items/wash',
+    name: 'items-wash',
+    component: ItemsWash
+  }
 ]
 
 const router = new VueRouter({
