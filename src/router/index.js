@@ -7,6 +7,7 @@ import Logout from '../views/Logout.vue'
 import ItemsIndex from '../views/ItemsIndex.vue'
 import ItemsNew from '../views/ItemsNew.vue'
 import ItemsLaunder from '../views/ItemsLaunder.vue'
+import UsersEdit from '../views/UsersEdit.vue'
 
 Vue.use(VueRouter)
 
@@ -45,6 +46,11 @@ const routes = [
     path: '/items/launder',
     name: 'items-launder',
     component: ItemsLaunder
+  },
+  {
+    path: '/users/me',
+    name: 'users-edit',
+    component: UsersEdit
   }
 ]
 
