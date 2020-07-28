@@ -1,20 +1,20 @@
 <template>
   <div class="items-index">
     <h2>Select Items to Wash!</h2>
-    <div class="form-group">
+    <form v-on:submit.prevent="updateStatus()">
       <select v-model="categoryFilter">
         <option value="">All Categories</option>
         <option v-for="category in categories" :value="category.name">{{ category.name }}</option>
       </select>
-    </div>
-    <div v-for="item in filterBy(items, categoryFilter, 'category_name')">
-      <input type="checkbox" :id="item.id" :value="item.id" v-model="itemIds">
-      <label :for="item.name">{{ item.name }} {{ item.status }} </label>
-      <button v-on:click="destroyItem(item)">Delete</button> 
-    </div>
-    <br>
-    <br>
-    <button v-on:click="updateStatus()">Submit</button>
+      <div v-for="item in filterBy(items, categoryFilter, 'category_name')">
+        <input type="checkbox" :id="item.id" :value="item.id" v-model="itemIds">
+        <label :for="item.name">{{ item.name }} {{ item.status }} </label>
+        <button v-on:click="destroyItem(item)">Delete</button> 
+      </div>
+      <br>
+      <br>
+      <input type="submit" class="btn btn-primary" value="Update">  
+    </form>
   </div>
 </template>
 
