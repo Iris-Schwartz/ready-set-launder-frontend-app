@@ -9,7 +9,7 @@
       <div v-if="isLoggedIn()">
         <router-link to="/items/new">Ready! |</router-link>
         <router-link to="/items">Set! |</router-link>
-        <router-link to="/items/wash">Launder! |</router-link>
+        <router-link to="/items/launder">Launder! |</router-link>
         <router-link to="/logout">Logout</router-link>
       </div>
     </div>

@@ -6,7 +6,7 @@ import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import ItemsIndex from '../views/ItemsIndex.vue'
 import ItemsNew from '../views/ItemsNew.vue'
-import ItemsWash from '../views/ItemsWash.vue'
+import ItemsLaunder from '../views/ItemsLaunder.vue'
 
 Vue.use(VueRouter)
 
@@ -42,9 +42,9 @@ const routes = [
     component: ItemsNew
   },
   {
-    path: '/items/wash',
-    name: 'items-wash',
-    component: ItemsWash
+    path: '/items/launder',
+    name: 'items-launder',
+    component: ItemsLaunder
   }
 ]
 
