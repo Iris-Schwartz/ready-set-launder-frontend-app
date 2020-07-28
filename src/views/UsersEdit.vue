@@ -11,6 +11,7 @@
     <input type="email" v-model="user.email">
     <input type="submit" class="btn btn-primary" value="Update">  
   </form>
+  <button v-on:click="deleteUser()">Delete Account</button>
 </div>
   
 </template>
@@ -39,6 +40,12 @@ export default {
       };
       axios.patch("/api/users/me", params).then((response) => {
         console.log(response.data);
+        this.$router.push("/");
+      });
+    },
+    deleteUser: function () {
+      axios.delete("/api/users/me").then((response) => {
+        console.log("User deleted!");
         this.$router.push("/");
       });
     },
