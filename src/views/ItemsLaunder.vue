@@ -1,20 +1,25 @@
 <template>
   <div class="items-launder">
-    <h2>Wash List</h2>
-    <div v-for="washSetting in washSettings">
-      <h3>{{ washSetting.name }}</h3>
-      <div v-for="item in filterBy(itemsWash, washSetting.name, 'wash_setting_name')">
-        {{ item.name }}
-      </div>
-    </div>
-
-    <br> 
-  
-    <h2>Dry List</h2>
-    <div v-for="drySetting in drySettings">
-      <h3>{{ drySetting.name }}</h3>
-      <div v-for="item in filterBy(itemsDry, drySetting.name, 'dry_setting_name')">
-        {{ item.name }}
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <h2>Wash List</h2>
+          <div v-for="washSetting in washSettings">
+            <h3>{{ washSetting.name }}</h3>
+            <div v-for="item in filterBy(itemsWash, washSetting.name, 'wash_setting_name')">
+              {{ item.name }}
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <h2>Dry List</h2>
+          <div v-for="drySetting in drySettings">
+            <h3>{{ drySetting.name }}</h3>
+            <div v-for="item in filterBy(itemsDry, drySetting.name, 'dry_setting_name')">
+              {{ item.name }}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
