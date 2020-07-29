@@ -20,35 +20,30 @@
       <option value="">All Categories</option>
       <option v-for="category in categories" :value="category.name">{{ category.name }}</option>
     </select>
-    <div v-for="item in filterBy(items, categoryFilter, 'category_name')">
+    <div v-for="(item, itemIndex) in filterBy(items, categoryFilter, 'category_name')">
       {{ item.name }}
-      <button type="button" data-toggle="modal" data-target="#editItemModal">
-        Editttt
+      <button type="button" data-toggle="modal" data-target="#editItemModal" v-on:click="setCurrentItem(itemIndex)">
+        Edit
       </button>
       <button v-on:click="destroyItem(item)">Delete</button>
-
       <div class="modal fade" id="editItemModal" tabindex="-1" role="dialog" aria-labelledby="editItemModalLabel"aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="editItemModalLabel">Edit Item</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
             </div>
             <div class="modal-body">
               <form v-on:submit.prevent="editItem(item)">
                 <div class="form-group">
                   <label>Name: </label>
-                  <input type="text" class="form-control" v-model="item.name">
+                  <input type="text" class="form-control" v-model="currentItem.name">
                 </div>
-                <input type="submit" class="btn btn-primary" value="Update">
+                <input type="submit" class="btn btn-primary close" value="Update" data-dismiss="modal" aria-label="Close">
               </form>
             </div>
           </div>
         </div>
       </div>
-
     </div>
 
   </div>
@@ -67,6 +62,7 @@ export default {
       items: [],
       categories: [],
       categoryFilter: "",
+      currentItem: {},
     };
   },
   created: function () {
@@ -81,10 +77,6 @@ export default {
     axios.get("/api/items").then((response) => {
       console.log(response.data);
       this.items = response.data;
-    });
-    axios.get(`/api/items/${this.$route.params.id}`).then((response) => {
-      console.log(response.data);
-      this.item = response.data;
     });
   },
   methods: {
@@ -120,6 +112,10 @@ export default {
       axios.patch(`/api/items/${this.item.id}`, params).then((response) => {
         console.log(response.data);
       });
+    },
+    setCurrentItem: function (index) {
+      this.currentItem = this.items[index];
+      console.log(this.currentItem);
     },
   },
 };
