@@ -9,7 +9,6 @@
       <div v-for="item in filterBy(items, categoryFilter, 'category_name')">
         <input type="checkbox" :id="item.id" :value="item.id" v-model="itemIds">
         <label :for="item.name">{{ item.name }} {{ item.status }} </label>
-        <button v-on:click="destroyItem(item)">Delete</button> 
       </div>
       <br>
       <br>
@@ -51,15 +50,6 @@ export default {
       axios.patch("/api/items_status", params).then((response) => {
         console.log(response.data);
       });
-    },
-    destroyItem: function (item) {
-      if (confirm("Are you sure you want to delete this item?")) {
-        axios.delete(`/api/items/${item.id}`).then((response) => {
-          console.log("Successfully destroyed", response.data);
-          var index = this.items.indexOf(item);
-          this.items.splice(index, 1);
-        });
-      }
     },
   },
 };
