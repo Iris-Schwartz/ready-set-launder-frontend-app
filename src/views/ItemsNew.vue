@@ -21,8 +21,8 @@
           <input type="radio" v-model="washSettingId" :id="washSetting.id" :value="washSetting.id">
           <label :for="washSetting.name">{{ washSetting.name }}</label>
           <img src="../assets/normalColdWash.png" style="width:48px;height:48px;">
-          <!-- <img :src="`../assets/${images[index]}`"> -->
-           <!-- {{ images[index] }}  -->
+          <!-- <img :src="`../assets/${images[index]}`">
+           {{ images[index] }}  -->
         </div>
       </div>
       <div class="form-group">
