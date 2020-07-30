@@ -4,14 +4,14 @@
       <div class="row">
         <div class="col">
           <h2>Wash List</h2>
-          {{ itemIdsForDry }}
-          {{ itemsWash }}
           <form v-on:submit.prevent="updateStatusToDry()">
             <div v-for="washSetting in washSettings">
-              <h3>{{ washSetting.name }}</h3>
-              <div v-for="item in filterBy(itemsWash, washSetting.name, 'wash_setting_name')">
-                <input type="checkbox" :id="item.id" :value="item.id" v-model="itemIdsForDry">
-                <label :for="item.name">{{ item.name }} {{ item.status }} </label>
+              <div v-if="filterBy(itemsWash, washSetting.name, 'wash_setting_name').length">
+                <h3>{{ washSetting.name }}</h3>
+                <div v-for="item in filterBy(itemsWash, washSetting.name, 'wash_setting_name')">
+                  <input type="checkbox" :id="item.id" :value="item.id" v-model="itemIdsForDry">
+                  <label :for="item.name">{{ item.name }} {{ item.status }} </label>
+                </div>
               </div>
             </div>
             <input type="submit" class="bt btn-primary" value="Submit">
@@ -19,13 +19,14 @@
         </div>
         <div class="col">
           <h2>Dry List</h2>
-          {{ itemIdsDone }}
            <form v-on:submit.prevent="updateStatusToCreated()">
             <div v-for="drySetting in drySettings">
-              <h3>{{ drySetting.name }}</h3>
-              <div v-for="item in filterBy(itemsDry, drySetting.name, 'dry_setting_name')">
-                <input type="checkbox" :id="item.id" :value="item.id" v-model="itemIdsDone" >
-                <label :for="item.name">{{ item.name }} {{ item.status }}</label>
+              <div v-if="filterBy(itemsDry, drySetting.name, 'dry_setting_name').length">
+                <h3>{{ drySetting.name }}</h3>
+                <div v-for="item in filterBy(itemsDry, drySetting.name, 'dry_setting_name')">
+                  <input type="checkbox" :id="item.id" :value="item.id" v-model="itemIdsDone" >
+                  <label :for="item.name">{{ item.name }} {{ item.status }}</label>
+                </div>
               </div>
             </div>
             <input type="submit" class="bt btn-primary" value="Submit">
