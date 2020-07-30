@@ -48,7 +48,7 @@ const routes = [
     component: ItemsLaunder
   },
   {
-    path: '/users/me',
+    path: '/users/me/edit',
     name: 'users-edit',
     component: UsersEdit
   }

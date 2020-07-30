@@ -11,7 +11,7 @@
         <router-link to="/items">Set! |</router-link>
         <router-link to="/items/launder">Launder! |</router-link>
         <router-link to="/logout">Logout |</router-link>
-        <router-link to="/users/me">Account</router-link>
+        <router-link to="/users/me/edit">Account</router-link>
       </div>
     </div>
     <router-view/>
