@@ -19,18 +19,16 @@
         <p>Select Wash Setting: </p>
         <div v-for="washSetting in washSettings">
           <input type="radio" v-model="washSettingId" :id="washSetting.id" :value="washSetting.id">
+          <img :src="washSetting.image_url" style="width:48px;height:50px">
           <label :for="washSetting.name">{{ washSetting.name }}</label>
-          <img src="../assets/normalColdWash.png" style="width:48px;height:48px;">
-          <!-- <img :src="`../assets/${images[index]}`">
-           {{ images[index] }}  -->
         </div>
       </div>
       <div class="form-group">
         <p>Select Dry Setting: </p>
         <div v-for="drySetting in drySettings">
           <input type="radio" v-model="drySettingId" :value="drySetting.id" :id="drySetting.id">
+           <img :src="drySetting.image_url" style="width:48px;height:50px">
           <label :for="drySetting.name">{{ drySetting.name }}</label>
-          <img src="../assets/normalTumbleDryLow.png" style="width:48px;height:48px;">
         </div>
       </div>
       <input type="submit" class="bt btn-primary" value="Submit">
@@ -52,18 +50,6 @@ export default {
       washSettings: [],
       drySettings: [],
       errors: [],
-      // images: [
-      //   "normalColdWash.png",
-      //   "normalWarmWash.png",
-      //   "normalHotWash.png",
-      //   "delicateColdWash.png",
-      //   "delicateWarmWash.png",
-      //   "delicateHotWash.png",
-      //   "permanentPressColdWash.png",
-      //   "permanentPressWarmWash.png",
-      //   "permanentPressHotWash.png",
-      //   "handWashOnly.png",
-      // ],
     };
   },
   created: function () {
