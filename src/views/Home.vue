@@ -1,15 +1,20 @@
 <template>
   <div class="home">
-    <div> {{ message }} </div>
+  <img src="https://i.imgur.com/tcpJGMZ.png">
+  <br>
+  <img src="https://i.imgur.com/QhFFR7O.png">
   </div>
 </template>
+<style>
+</style>
+
 
 <script>
 export default {
-  data: function() {
+  data: function () {
     return {
-      message: "Hello World"
+      message: "Hello World",
     };
-  }
+  },
 };
 </script>

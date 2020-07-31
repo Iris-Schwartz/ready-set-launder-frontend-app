@@ -8,7 +8,7 @@
       </select>
       <div v-for="item in filterBy(items, categoryFilter, 'category_name')">
         <input type="checkbox" :id="item.id" :value="item.id" v-model="itemIds">
-        <label :for="item.name">{{ item.name }} {{ item.status }} </label>
+        <label :for="item.name">{{ item.name }}</label>
       </div>
       <br>
       <br>

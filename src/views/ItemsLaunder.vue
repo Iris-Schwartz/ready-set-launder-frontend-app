@@ -8,8 +8,7 @@
             <div v-for="washSetting in washSettings">
               <div v-if="filterBy(itemsWash, washSetting.name, 'wash_setting_name').length">
                 <input type="checkbox" :id="washSetting.id" :value="washSetting.id" v-model="washSettingIds">
-                <label class="large-label" :for="washSetting.name">{{ washSetting.name }}</label>
-                {{ washSettingIds }}
+                <label :for="washSetting.name">{{ washSetting.name }}</label>
                 <div v-for="item in filterBy(itemsWash, washSetting.name, 'wash_setting_name')">
                   {{ item.name }}
                 </div>
@@ -24,7 +23,7 @@
             <div v-for="drySetting in drySettings">
               <div v-if="filterBy(itemsDry, drySetting.name, 'dry_setting_name').length">
                 <input type="checkbox" :id="drySetting.id" :value="drySetting.id" v-model="drySettingIds">
-                <label class="large-label" :for="drySetting.name">{{ drySetting.name }}</label>
+                <label :for="drySetting.name">{{ drySetting.name }}</label>
                 <div v-for="item in filterBy(itemsDry, drySetting.name, 'dry_setting_name')">
                   {{ item.name }}
                 </div>
