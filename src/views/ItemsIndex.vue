@@ -6,7 +6,7 @@
         <option value="">All Categories</option>
         <option v-for="category in categories" :value="category.name">{{ category.name }}</option>
       </select>
-      <div v-for="item in filterBy(items, categoryFilter, 'category_name')">
+      <div v-for="item in orderBy(filterBy(items, categoryFilter, 'category_name'), 'name')">
         <input type="checkbox" :id="item.id" :value="item.id" v-model="itemIds">
         <label :for="item.name">{{ item.name }}</label>
       </div>

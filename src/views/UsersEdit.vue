@@ -20,7 +20,7 @@
       <option value="">All Categories</option>
       <option v-for="category in categories" :value="category.name">{{ category.name }}</option>
     </select>
-    <div v-for="(item, itemIndex) in filterBy(items, categoryFilter, 'category_name')">
+    <div v-for="(item, itemIndex) in orderBy(filterBy(items, categoryFilter, 'category_name'), 'name')">
       {{ item.name }}
       <button type="button" data-toggle="modal" data-target="#editItemModal" v-on:click="setCurrentItem(itemIndex)">
         Edit
