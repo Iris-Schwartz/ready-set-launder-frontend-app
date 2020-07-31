@@ -49,6 +49,7 @@ export default {
       };
       axios.patch("/api/items_status", params).then((response) => {
         console.log(response.data);
+        this.$router.push("/items/launder");
       });
     },
   },
