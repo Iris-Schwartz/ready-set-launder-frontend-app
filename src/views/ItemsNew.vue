@@ -3,7 +3,7 @@
     <form v-on:submit.prevent="createItem()">
       <h2>Add Clothing Item to Inventory!</h2>
       <ul>
-        <li v-for="error in errors">{{ error }}</li>
+        <li v-for="error in errors" class="text-danger">{{ error }}</li>
       </ul>
       <div class="form-group">
         <label>Item Name: </label>

@@ -2,7 +2,7 @@
   <div class="users-edit">
     <h2>User Information</h2>
     <ul>
-      <li v-for="error in errors">{{ error }}</li>
+      <li v-for="error in errors" class="text-danger">{{ error }}</li>
     </ul>
 
     <form v-on:submit.prevent="editUser()">
@@ -20,9 +20,9 @@
       <option value="">All Categories</option>
       <option v-for="category in categories" :value="category.name">{{ category.name }}</option>
     </select>
-    <div v-for="(item, itemIndex) in orderBy(filterBy(items, categoryFilter, 'category_name'), 'name')">
-      {{ item.name }}
-      <button type="button" data-toggle="modal" data-target="#editItemModal" v-on:click="setCurrentItem(itemIndex)">
+    <div v-for="item in orderBy(filterBy(items, categoryFilter, 'category_name'), 'name')">
+      {{ item.name }} - Last updated at: {{ relativeDate(item.updated_at) }}
+      <button type="button" data-toggle="modal" data-target="#editItemModal" v-on:click="currentItem = item">
         Edit
       </button>
       <button v-on:click="destroyItem(item)">Delete</button>
@@ -32,15 +32,15 @@
             <div class="modal-header">
               <h5 class="modal-title" id="editItemModalLabel">Edit Item</h5>
             </div>
-            <div class="modal-body">
-              <form v-on:submit.prevent="editItem(item)">
+            <!-- <div class="modal-body">
+              <form v-on:submit.prevent="editItem(currentItem)">
                 <div class="form-group">
                   <label>Name: </label>
                   <input type="text" class="form-control" v-model="currentItem.name">
                 </div>
                 <input type="submit" class="btn btn-primary close" value="Update" data-dismiss="modal" aria-label="Close">
               </form>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
@@ -52,6 +52,7 @@
 <script>
 import axios from "axios";
 import Vue2Filters from "vue2-filters";
+import moment from "moment";
 
 export default {
   mixins: [Vue2Filters.mixin],
@@ -85,37 +86,48 @@ export default {
         username: this.user.username,
         email: this.user.email,
       };
-      axios.patch("/api/users/me", params).then((response) => {
-        console.log(response.data);
-        this.$router.push("/");
-      });
+      axios
+        .patch("/api/users/me", params)
+        .then((response) => {
+          console.log(response.data);
+        })
+        .catch((error) => {
+          this.errors = error.response.data.errors;
+        });
     },
     destroyUser: function () {
-      axios.delete("/api/users/me").then((response) => {
-        console.log("User destroyed!");
-        this.$router.push("/");
-      });
+      if (confirm("Are you sure you want to delete your account?")) {
+        axios.delete("/api/users/me").then((response) => {
+          console.log(response.data);
+          localStorage.removeItem("jwt");
+          this.$router.push("/");
+        });
+      }
     },
     destroyItem: function (item) {
       if (confirm("Are you sure you want to delete this item?")) {
         axios.delete(`/api/items/${item.id}`).then((response) => {
-          console.log("Successfully destroyed", response.data);
+          console.log(response.data);
           var index = this.items.indexOf(item);
           this.items.splice(index, 1);
         });
       }
     },
-    editItem: function (item) {
-      var params = {
-        name: this.item.name,
-      };
-      axios.patch(`/api/items/${this.item.id}`, params).then((response) => {
-        console.log(response.data);
-      });
-    },
-    setCurrentItem: function (index) {
-      this.currentItem = this.items[index];
-      console.log(this.currentItem);
+    // editItem: function (item) {
+    //   var params = {
+    //     name: this.item.name,
+    //   };
+    //   axios
+    //     .patch(`/api/items/${item.id}`, params)
+    //     .then((response) => {
+    //       console.log(response.data);
+    //     })
+    //     .catch((error) => {
+    //       this.errors = error.response.data.errors;
+    //     });
+    // },
+    relativeDate: function (date) {
+      return moment(date).format("MMMM Do YYYY h:mm a");
     },
   },
 };
