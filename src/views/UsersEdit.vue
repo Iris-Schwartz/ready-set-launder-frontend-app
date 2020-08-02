@@ -7,26 +7,45 @@
 
     <form v-on:submit.prevent="editUser()">
       <label>Username: </label>
-      <input type="text" v-model="user.username">
+      <input type="text" v-model="user.username" />
       <label>Email: </label>
-      <input type="email" v-model="user.email">
-      <input type="submit" class="btn btn-primary" value="Update">  
+      <input type="email" v-model="user.email" />
+      <input type="submit" class="btn btn-primary" value="Update" />
     </form>
 
     <button v-on:click="destroyUser()">Delete Account</button>
-    
+
     <h2>Clothing Inventory</h2>
     <select v-model="categoryFilter">
       <option value="">All Categories</option>
-      <option v-for="category in categories" :value="category.name">{{ category.name }}</option>
+      <option v-for="category in categories" :value="category.name">{{
+        category.name
+      }}</option>
     </select>
-    <div v-for="item in orderBy(filterBy(items, categoryFilter, 'category_name'), 'name')">
+    <div
+      v-for="item in orderBy(
+        filterBy(items, categoryFilter, 'category_name'),
+        'name'
+      )"
+    >
       {{ item.name }} - Last updated at: {{ relativeDate(item.updated_at) }}
-      <button type="button" data-toggle="modal" data-target="#editItemModal" v-on:click="currentItem = item">
+      <button
+        type="button"
+        data-toggle="modal"
+        data-target="#editItemModal"
+        v-on:click="currentItem = item"
+      >
         Edit
       </button>
       <button v-on:click="destroyItem(item)">Delete</button>
-      <div class="modal fade" id="editItemModal" tabindex="-1" role="dialog" aria-labelledby="editItemModalLabel"aria-hidden="true">
+      <div
+        class="modal fade"
+        id="editItemModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="editItemModalLabel"
+        aria-hidden="true"
+      >
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -45,7 +64,6 @@
         </div>
       </div>
     </div>
-
   </div>
 </template>
 
@@ -56,7 +74,7 @@ import moment from "moment";
 
 export default {
   mixins: [Vue2Filters.mixin],
-  data: function () {
+  data: function() {
     return {
       user: {},
       errors: [],
@@ -66,7 +84,7 @@ export default {
       currentItem: {},
     };
   },
-  created: function () {
+  created: function() {
     axios.get("/api/users/me").then((response) => {
       console.log(response.data);
       this.user = response.data;
@@ -81,7 +99,7 @@ export default {
     });
   },
   methods: {
-    editUser: function () {
+    editUser: function() {
       var params = {
         username: this.user.username,
         email: this.user.email,
@@ -95,7 +113,7 @@ export default {
           this.errors = error.response.data.errors;
         });
     },
-    destroyUser: function () {
+    destroyUser: function() {
       if (confirm("Are you sure you want to delete your account?")) {
         axios.delete("/api/users/me").then((response) => {
           console.log(response.data);
@@ -104,7 +122,7 @@ export default {
         });
       }
     },
-    destroyItem: function (item) {
+    destroyItem: function(item) {
       if (confirm("Are you sure you want to delete this item?")) {
         axios.delete(`/api/items/${item.id}`).then((response) => {
           console.log(response.data);
@@ -126,7 +144,7 @@ export default {
     //       this.errors = error.response.data.errors;
     //     });
     // },
-    relativeDate: function (date) {
+    relativeDate: function(date) {
       return moment(date).format("MMMM Do YYYY h:mm a");
     },
   },

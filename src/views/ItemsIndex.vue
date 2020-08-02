@@ -4,15 +4,27 @@
     <form v-on:submit.prevent="updateStatus()">
       <select v-model="categoryFilter">
         <option value="">All Categories</option>
-        <option v-for="category in categories" :value="category.name">{{ category.name }}</option>
+        <option v-for="category in categories" :value="category.name">{{
+          category.name
+        }}</option>
       </select>
-      <div v-for="item in orderBy(filterBy(items, categoryFilter, 'category_name'), 'name')">
-        <input type="checkbox" :id="item.id" :value="item.id" v-model="itemIds">
+      <div
+        v-for="item in orderBy(
+          filterBy(items, categoryFilter, 'category_name'),
+          'name'
+        )"
+      >
+        <input
+          type="checkbox"
+          :id="item.id"
+          :value="item.id"
+          v-model="itemIds"
+        />
         <label :for="item.name">{{ item.name }}</label>
       </div>
-      <br>
-      <br>
-      <input type="submit" class="btn btn-primary" value="Update">  
+      <br />
+      <br />
+      <input type="submit" class="btn btn-primary" value="Done" />
     </form>
   </div>
 </template>
@@ -23,7 +35,7 @@ import Vue2Filters from "vue2-filters";
 
 export default {
   mixins: [Vue2Filters.mixin],
-  data: function () {
+  data: function() {
     return {
       items: [],
       categories: [],
@@ -31,7 +43,7 @@ export default {
       itemIds: [],
     };
   },
-  created: function () {
+  created: function() {
     axios.get("/api/categories").then((response) => {
       console.log(response.data);
       this.categories = response.data;
@@ -42,7 +54,7 @@ export default {
     });
   },
   methods: {
-    updateStatus: function () {
+    updateStatus: function() {
       var params = {
         item_ids: this.itemIds,
         status: "wash",
