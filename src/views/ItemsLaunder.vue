@@ -12,21 +12,31 @@
                     .length
                 "
               >
-                <input
-                  type="checkbox"
-                  :id="washSetting.id"
-                  :value="washSetting.id"
-                  v-model="washSettingIds"
-                />
-                <label :for="washSetting.name">{{ washSetting.name }}</label>
-                <div
-                  v-for="item in filterBy(
-                    itemsWash,
-                    washSetting.name,
-                    'wash_setting_name'
-                  )"
-                >
-                  {{ item.name }}
+                <div class="card">
+                  <h4 class="card-header">
+                    <input
+                      type="checkbox"
+                      :id="washSetting.id"
+                      :value="washSetting.id"
+                      v-model="washSettingIds"
+                    />
+                    <label :for="washSetting.name">{{
+                      washSetting.name
+                    }}</label>
+                  </h4>
+                  <ul class="list-group list-group-flush">
+                    <div
+                      v-for="item in filterBy(
+                        itemsWash,
+                        washSetting.name,
+                        'wash_setting_name'
+                      )"
+                    >
+                      <li class="list-group-item">
+                        {{ item.name }}
+                      </li>
+                    </div>
+                  </ul>
                 </div>
               </div>
             </div>
@@ -42,21 +52,29 @@
                   filterBy(itemsDry, drySetting.name, 'dry_setting_name').length
                 "
               >
-                <input
-                  type="checkbox"
-                  :id="drySetting.id"
-                  :value="drySetting.id"
-                  v-model="drySettingIds"
-                />
-                <label :for="drySetting.name">{{ drySetting.name }}</label>
-                <div
-                  v-for="item in filterBy(
-                    itemsDry,
-                    drySetting.name,
-                    'dry_setting_name'
-                  )"
-                >
-                  {{ item.name }}
+                <div class="card">
+                  <h4 class="card-header">
+                    <input
+                      type="checkbox"
+                      :id="drySetting.id"
+                      :value="drySetting.id"
+                      v-model="drySettingIds"
+                    />
+                    <label :for="drySetting.name">{{ drySetting.name }}</label>
+                  </h4>
+                  <ul class="list-group list-group-flush">
+                    <div
+                      v-for="item in filterBy(
+                        itemsDry,
+                        drySetting.name,
+                        'dry_setting_name'
+                      )"
+                    >
+                      <li class="list-group-item">
+                        {{ item.name }}
+                      </li>
+                    </div>
+                  </ul>
                 </div>
               </div>
             </div>
@@ -72,21 +90,29 @@
                   filterBy(itemsFold, category.name, 'category_name').length
                 "
               >
-                <input
-                  type="checkbox"
-                  :id="category.id"
-                  :value="category.id"
-                  v-model="categoryIds"
-                />
-                <label :for="category.name">{{ category.name }}</label>
-                <div
-                  v-for="item in filterBy(
-                    itemsFold,
-                    category.name,
-                    'category_name'
-                  )"
-                >
-                  {{ item.name }}
+                <div class="card">
+                  <h4 class="card-header">
+                    <input
+                      type="checkbox"
+                      :id="category.id"
+                      :value="category.id"
+                      v-model="categoryIds"
+                    />
+                    <label :for="category.name">{{ category.name }}</label>
+                  </h4>
+                  <ul class="list-group list-group-flush">
+                    <div
+                      v-for="item in filterBy(
+                        itemsFold,
+                        category.name,
+                        'category_name'
+                      )"
+                    >
+                      <li class="list-group-item">
+                        {{ item.name }}
+                      </li>
+                    </div>
+                  </ul>
                 </div>
               </div>
             </div>
