@@ -28,7 +28,7 @@
         'name'
       )"
     >
-      {{ item.name }} - Last updated at: {{ relativeDate(item.updated_at) }}
+      {{ item.name }}
       <form v-on:submit.prevent="editItem(item)">
         <div class="form-group">
           <label>Name: </label>
@@ -44,7 +44,6 @@
 <script>
 import axios from "axios";
 import Vue2Filters from "vue2-filters";
-import moment from "moment";
 
 export default {
   mixins: [Vue2Filters.mixin],
@@ -117,9 +116,6 @@ export default {
         .catch((error) => {
           this.errors = error.response.data.errors;
         });
-    },
-    relativeDate: function(date) {
-      return moment(date).format("MMMM Do YYYY h:mm a");
     },
   },
 };
