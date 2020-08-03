@@ -1,6 +1,42 @@
 <template>
   <div class="login">
-    <form v-on:submit.prevent="submit()">
+    <div id="content">
+      <div class="container">
+          <form class="form-login form-wrapper form-medium" v-on:submit.prevent="submit()" role="form">
+            <h3 class="title-divider">
+              <span>Login</span>
+            </h3>
+            <ul>
+              <li class="text-danger" v-for="error in errors">{{ error }}</li>
+            </ul>
+            <div class="form-group">
+              <label class="sr-only" for="signup-email-page">Email</label>
+              <input
+                type="text"
+                class="form-control"
+                id="signup-email-page"
+                placeholder="Email"
+                v-model="email"
+              />
+            </div>
+            <div class="form-group">
+              <label class="sr-only" for="signup-password-page">Password</label>
+              <input
+                type="text"
+                class="form-control"
+                id="signup-password-page"
+                placeholder="Password"
+                v-model="password"
+              />
+            </div>
+            <input type="submit" class="btn btn-primary" value="Submit">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- <form v-on:submit.prevent="submit()">
       <h1>Login</h1>
       <ul>
         <li class="text-danger" v-for="error in errors">{{ error }}</li>
@@ -14,15 +50,14 @@
         <input type="password" class="form-control" v-model="password">
       </div>
       <input type="submit" class="btn btn-primary" value="Submit">
-    </form>
-  </div>
+    </form> -->
 </template>
 
 <script>
 import axios from "axios";
 
 export default {
-  data: function () {
+  data: function() {
     return {
       errors: [],
       email: "",
@@ -30,7 +65,7 @@ export default {
     };
   },
   methods: {
-    submit: function () {
+    submit: function() {
       var params = {
         email: this.email,
         password: this.password,
