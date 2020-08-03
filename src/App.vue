@@ -4,7 +4,7 @@
       <router-link to="/">Home</router-link> |
       <div v-if="!isLoggedIn()">
         <router-link to="/signup">Signup</router-link> |
-        <router-link to="/login">Login</router-link> 
+        <router-link to="/login">Login</router-link>
       </div>
       <div v-if="isLoggedIn()">
         <router-link to="/items/new">Ready! |</router-link>
@@ -14,14 +14,14 @@
         <router-link to="/users/me/edit">Account</router-link>
       </div>
     </div>
-    <router-view/>
+    <router-view />
   </div>
 </template>
 
 <script>
 export default {
   methods: {
-    isLoggedIn: function () {
+    isLoggedIn: function() {
       return localStorage.getItem("jwt");
     },
   },
@@ -36,24 +36,14 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
-
 #nav {
   padding: 30px;
 }
-
 #nav a {
   font-weight: bold;
   color: #2c3e50;
 }
-
 #nav a.router-link-exact-active {
   color: #42b983;
 }
 </style>
-
-
-
-
-
-
-

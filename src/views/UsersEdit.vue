@@ -10,7 +10,7 @@
       <input type="text" v-model="user.username" />
       <label>Email: </label>
       <input type="email" v-model="user.email" />
-      <input type="submit" class="btn btn-primary" value="Update" />
+      <input type="submit" class="btn" value="Update" />
     </form>
 
     <button v-on:click="destroyUser()">Delete Account</button>
@@ -47,7 +47,7 @@ import Vue2Filters from "vue2-filters";
 
 export default {
   mixins: [Vue2Filters.mixin],
-  data: function() {
+  data: function () {
     return {
       user: {},
       errors: [],
@@ -57,7 +57,7 @@ export default {
       currentItem: {},
     };
   },
-  created: function() {
+  created: function () {
     axios.get("/api/users/me").then((response) => {
       console.log(response.data);
       this.user = response.data;
@@ -72,7 +72,7 @@ export default {
     });
   },
   methods: {
-    editUser: function() {
+    editUser: function () {
       var params = {
         username: this.user.username,
         email: this.user.email,
@@ -86,7 +86,7 @@ export default {
           this.errors = error.response.data.errors;
         });
     },
-    destroyUser: function() {
+    destroyUser: function () {
       if (confirm("Are you sure you want to delete your account?")) {
         axios.delete("/api/users/me").then((response) => {
           console.log(response.data);
@@ -95,7 +95,7 @@ export default {
         });
       }
     },
-    destroyItem: function(item) {
+    destroyItem: function (item) {
       if (confirm("Are you sure you want to delete this item?")) {
         axios.delete(`/api/items/${item.id}`).then((response) => {
           console.log(response.data);
@@ -104,7 +104,7 @@ export default {
         });
       }
     },
-    editItem: function(item) {
+    editItem: function (item) {
       var params = {
         name: item.name,
       };
