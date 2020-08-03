@@ -29,40 +29,14 @@
       )"
     >
       {{ item.name }} - Last updated at: {{ relativeDate(item.updated_at) }}
-      <button
-        type="button"
-        data-toggle="modal"
-        data-target="#editItemModal"
-        v-on:click="currentItem = item"
-      >
-        Edit
-      </button>
-      <button v-on:click="destroyItem(item)">Delete</button>
-      <div
-        class="modal fade"
-        id="editItemModal"
-        tabindex="-1"
-        role="dialog"
-        aria-labelledby="editItemModalLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="editItemModalLabel">Edit Item</h5>
-            </div>
-            <!-- <div class="modal-body">
-              <form v-on:submit.prevent="editItem(currentItem)">
-                <div class="form-group">
-                  <label>Name: </label>
-                  <input type="text" class="form-control" v-model="currentItem.name">
-                </div>
-                <input type="submit" class="btn btn-primary close" value="Update" data-dismiss="modal" aria-label="Close">
-              </form>
-            </div> -->
-          </div>
+      <form v-on:submit.prevent="editItem(item)">
+        <div class="form-group">
+          <label>Name: </label>
+          <input type="text" class="form-control" v-model="item.name" />
         </div>
-      </div>
+        <input type="submit" value="Update" />
+      </form>
+      <button v-on:click="destroyItem(item)">Delete</button>
     </div>
   </div>
 </template>
@@ -131,19 +105,19 @@ export default {
         });
       }
     },
-    // editItem: function (item) {
-    //   var params = {
-    //     name: this.item.name,
-    //   };
-    //   axios
-    //     .patch(`/api/items/${item.id}`, params)
-    //     .then((response) => {
-    //       console.log(response.data);
-    //     })
-    //     .catch((error) => {
-    //       this.errors = error.response.data.errors;
-    //     });
-    // },
+    editItem: function(item) {
+      var params = {
+        name: item.name,
+      };
+      axios
+        .patch(`/api/items/${item.id}`, params)
+        .then((response) => {
+          console.log(response.data);
+        })
+        .catch((error) => {
+          this.errors = error.response.data.errors;
+        });
+    },
     relativeDate: function(date) {
       return moment(date).format("MMMM Do YYYY h:mm a");
     },
