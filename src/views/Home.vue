@@ -1,8 +1,7 @@
 <template>
   <div class="home">
-    <img src="https://i.imgur.com/tcpJGMZ.png" />
-    <br />
-    <img src="https://i.imgur.com/QhFFR7O.png" />
+    <!-- <img src="https://i.imgur.com/tcpJGMZ.png" /> -->
+    <!-- <img src="https://i.imgur.com/QhFFR7O.png" /> -->
   </div>
 </template>
 <style></style>
