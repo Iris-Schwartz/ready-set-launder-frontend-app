@@ -26,24 +26,11 @@
             <div class="header-brand">
               <a class="header-brand-text" href="index.html" title="Home">
                 <h1 class="h2">
-                  <span class="header-brand-text-alt">ReadySet</span
-                  >Launder<span class="header-brand-text-alt">.</span>
+                  <span class="header-brand-text-alt"></span
+                  >ReadySetLaunder<span class="header-brand-text-alt"></span>
                 </h1>
               </a>
               <div class="header-divider d-none d-lg-block"></div>
-            </div>
-            <!-- other header content -->
-            <div class="header-block order-12">
-              <!-- mobile collapse menu button - data-toggle="collapse" = default BS menu - data-toggle="off-canvas" = Off-cavnas Menu - data-toggle="overlay" = Overlay Menu -->
-              <!-- <a
-                href="#top"
-                class="btn btn-link btn-icon header-btn float-right d-lg-none"
-                data-toggle="off-canvas"
-                data-target=".navbar-main"
-                data-settings='{"cloneTarget":true, "targetClassExtras": "navbar-offcanvas"}'
-              >
-                <i class="fa fa-bars"></i>
-              </a> -->
             </div>
 
             <div class="navbar navbar-expand-md navbar-static-top">
@@ -100,10 +87,15 @@
         </div>
       </div>
     </div>
-
-    <router-view />
+    <div id="content">
+      <div class="container">
+        <router-view />
+      </div>
+    </div>
   </div>
 </template>
+
+<style></style>
 
 <script>
 export default {
