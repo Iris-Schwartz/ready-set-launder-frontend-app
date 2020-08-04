@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row">
         <div class="col">
-          <h2>Wash List</h2>
+          <h2>Wash Lists</h2>
           <form v-on:submit.prevent="updateStatusToDry()">
             <div v-for="washSetting in washSettings">
               <div
@@ -44,7 +44,7 @@
           </form>
         </div>
         <div class="col">
-          <h2>Dry List</h2>
+          <h2>Dry Lists</h2>
           <form v-on:submit.prevent="updateStatusToFold()">
             <div v-for="drySetting in drySettings">
               <div
@@ -82,7 +82,7 @@
           </form>
         </div>
         <div class="col">
-          <h2>Fold List</h2>
+          <h2>Fold Lists</h2>
           <form v-on:submit.prevent="updateStatusToCreated()">
             <div v-for="category in categories">
               <div
