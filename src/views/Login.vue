@@ -22,7 +22,7 @@
             <div class="form-group">
               <label class="sr-only" for="signup-password-page">Password</label>
               <input
-                type="text"
+                type="password"
                 class="form-control"
                 id="signup-password-page"
                 placeholder="Password"
