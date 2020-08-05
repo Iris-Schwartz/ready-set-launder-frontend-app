@@ -2,18 +2,27 @@
   <div class="users-edit">
     <div id="content">
       <div class="container">
-        <div class="card">
-          <h4 class="p-2">User Information</h4>
+        <div class="card p-4">
+          <h4 class="card-title mb-2">User Information</h4>
           <hr class="mt-0" />
           <p>Username: {{ user.username }}</p>
           <p>Email: {{ user.email }}</p>
-          <button
-            class="btn btn-primary"
-            data-toggle="modal"
-            data-target=".user-modal-lg"
-          >
-            Update
-          </button>
+          <div>
+            <button
+              class="btn btn-primary"
+              data-toggle="modal"
+              data-target=".user-modal-lg"
+            >
+              Update
+            </button>
+            <button
+              class="btn btn-primary"
+              style="margin-left: 20px;"
+              v-on:click="destroyUser()"
+            >
+              Delete Account
+            </button>
+          </div>
           <div
             class="modal fade user-modal-lg"
             tabindex="-1"
@@ -50,19 +59,22 @@
                     </div>
                   </div>
                   <div class="modal-footer">
-                    <input type="submit" class="btn" value="Submit" />
+                    <input
+                      type="submit"
+                      class="btn btn-primary"
+                      data-dismiss="modal"
+                      aria-label="Close"
+                      value="Submit"
+                    />
                   </div>
                 </form>
               </div>
             </div>
           </div>
-          <button class="btn btn-tertiary" v-on:click="destroyUser()">
-            Delete Account
-          </button>
         </div>
 
-        <div class="card">
-          <h4 class="p-2">
+        <div class="card p-4">
+          <h4 class="card-title mb-2">
             Clothing Inventory
           </h4>
           <hr class="mt-0" />
@@ -82,7 +94,7 @@
                   'name'
                 )"
               >
-                <li class="list-group-item">
+                <li class="list-group-item" style="margin-right: 20px">
                   {{ item.name }}
                   <button
                     class="btn btn-primary"
@@ -129,7 +141,11 @@
                       </div>
                     </div>
                   </div>
-                  <button v-on:click="destroyItem(item)" class="btn">
+                  <button
+                    v-on:click="destroyItem(item)"
+                    class="btn btn-primary"
+                    style="margin-left: 20px"
+                  >
                     Delete
                   </button>
                 </li>
@@ -141,6 +157,8 @@
     </div>
   </div>
 </template>
+
+<style></style>
 
 <script>
 import axios from "axios";
