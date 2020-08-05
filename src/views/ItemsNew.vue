@@ -15,7 +15,7 @@
             <div class="product-options row mb-4">
               <form v-on:submit.prevent="createItem()">
                 <div class="form-group">
-                  <div class="col-md-12 text-sm text-uppercase">Item Name</div>
+                  <div class="col-md-12 text-sm text-uppercase">Name</div>
                   <div class="col-md-4 mb-3">
                     <input type="text" v-model="name" />
                   </div>
@@ -38,7 +38,7 @@
                 </div>
                 <div class="form-group">
                   <div class="col-md-12 text-sm text-uppercase">
-                    Select Wash Setting
+                    Wash Setting
                   </div>
                   <div class="col-md-12 col-lg-12 mb-3">
                     <div class="row text-center mb-4">
@@ -74,7 +74,7 @@
                 </div>
                 <div class="form-group">
                   <div class="col-md-12 text-sm text-uppercase">
-                    Select Dry Setting
+                    Dry Setting
                   </div>
                   <div class="col-md-12 col-lg-12 mb-3">
                     <div class="row text-center mb-4">
