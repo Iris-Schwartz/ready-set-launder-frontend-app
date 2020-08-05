@@ -87,11 +87,7 @@
         </div>
       </div>
     </div>
-    <div id="content">
-      <div class="container">
-        <router-view />
-      </div>
-    </div>
+    <router-view></router-view>
   </div>
 </template>
 

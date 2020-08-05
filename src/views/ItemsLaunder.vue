@@ -1,130 +1,159 @@
 <template>
   <div class="items-launder">
-    <div class="content">
+    <div id="content">
       <div class="container">
-        <h2 class="title-divider">
-          Lists
-        </h2>
-        <div class="row">
-          <div class="col">
-            <h2>Wash Lists</h2>
-            <form v-on:submit.prevent="updateStatusToDry()">
-              <div v-for="washSetting in washSettings">
-                <div
-                  v-if="
-                    filterBy(itemsWash, washSetting.name, 'wash_setting_name')
-                      .length
-                  "
-                >
-                  <div class="card">
-                    <h4 class="card-header">
-                      <input
-                        type="checkbox"
-                        :id="washSetting.id"
-                        :value="washSetting.id"
-                        v-model="washSettingIds"
-                      />
-                      <label :for="washSetting.name">{{
-                        washSetting.name
-                      }}</label>
-                    </h4>
-                    <ul class="list-group list-group-flush">
+        <div class="card p-4">
+          <h2 class="card-title mb-2">
+            Lists
+          </h2>
+          <hr class="my-3" />
+          <div class="card p-4">
+            <div class="row">
+              <div class="col">
+                <div class="card p-4">
+                  <h3 class="card-title mb-2">
+                    To Wash
+                  </h3>
+                  <hr class="my-3" />
+                  <form v-on:submit.prevent="updateStatusToDry()">
+                    <div v-for="washSetting in washSettings">
                       <div
-                        v-for="item in filterBy(
-                          itemsWash,
-                          washSetting.name,
-                          'wash_setting_name'
-                        )"
+                        v-if="
+                          filterBy(
+                            itemsWash,
+                            washSetting.name,
+                            'wash_setting_name'
+                          ).length
+                        "
                       >
-                        <li class="list-group-item">
-                          {{ item.name }}
-                        </li>
+                        <div class="card">
+                          <h4 class="card-header">
+                            <input
+                              type="checkbox"
+                              :id="washSetting.id"
+                              :value="washSetting.id"
+                              v-model="washSettingIds"
+                            />
+                            <label :for="washSetting.name">{{
+                              washSetting.name
+                            }}</label>
+                          </h4>
+                          <ul class="list-group list-group-flush">
+                            <div
+                              v-for="item in filterBy(
+                                itemsWash,
+                                washSetting.name,
+                                'wash_setting_name'
+                              )"
+                            >
+                              <li class="list-group-item">
+                                {{ item.name }}
+                              </li>
+                            </div>
+                          </ul>
+                        </div>
                       </div>
-                    </ul>
-                  </div>
+                    </div>
+                    <input type="submit" class="bt btn-primary" value="Done" />
+                  </form>
                 </div>
               </div>
-              <input type="submit" class="bt btn-primary" value="Done" />
-            </form>
-          </div>
-          <div class="col">
-            <h2>Dry Lists</h2>
-            <form v-on:submit.prevent="updateStatusToFold()">
-              <div v-for="drySetting in drySettings">
-                <div
-                  v-if="
-                    filterBy(itemsDry, drySetting.name, 'dry_setting_name')
-                      .length
-                  "
-                >
-                  <div class="card">
-                    <h4 class="card-header">
-                      <input
-                        type="checkbox"
-                        :id="drySetting.id"
-                        :value="drySetting.id"
-                        v-model="drySettingIds"
-                      />
-                      <label :for="drySetting.name">{{
-                        drySetting.name
-                      }}</label>
-                    </h4>
-                    <ul class="list-group list-group-flush">
+              <div class="col">
+                <div class="card p-4">
+                  <h3 class="card-title mb-2">
+                    To Dry
+                  </h3>
+                  <hr class="my-3" />
+                  <form v-on:submit.prevent="updateStatusToFold()">
+                    <div v-for="drySetting in drySettings">
                       <div
-                        v-for="item in filterBy(
-                          itemsDry,
-                          drySetting.name,
-                          'dry_setting_name'
-                        )"
+                        v-if="
+                          filterBy(
+                            itemsDry,
+                            drySetting.name,
+                            'dry_setting_name'
+                          ).length
+                        "
                       >
-                        <li class="list-group-item">
-                          {{ item.name }}
-                        </li>
+                        <div class="card">
+                          <h4 class="card-header">
+                            <input
+                              type="checkbox"
+                              :id="drySetting.id"
+                              :value="drySetting.id"
+                              v-model="drySettingIds"
+                            />
+                            <label :for="drySetting.name">{{
+                              drySetting.name
+                            }}</label>
+                          </h4>
+                          <ul class="list-group list-group-flush">
+                            <div
+                              v-for="item in filterBy(
+                                itemsDry,
+                                drySetting.name,
+                                'dry_setting_name'
+                              )"
+                            >
+                              <li class="list-group-item">
+                                {{ item.name }}
+                              </li>
+                            </div>
+                          </ul>
+                        </div>
                       </div>
-                    </ul>
-                  </div>
+                    </div>
+                    <input type="submit" class="bt btn-primary" value="Done" />
+                  </form>
                 </div>
               </div>
-              <input type="submit" class="bt btn-primary" value="Done" />
-            </form>
-          </div>
-          <div class="col">
-            <h2>Fold Lists</h2>
-            <form v-on:submit.prevent="updateStatusToCreated()">
-              <div v-for="category in categories">
-                <div
-                  v-if="
-                    filterBy(itemsFold, category.name, 'category_name').length
-                  "
-                >
-                  <div class="card">
-                    <h4 class="card-header">
-                      <input
-                        type="checkbox"
-                        :id="category.id"
-                        :value="category.id"
-                        v-model="categoryIds"
-                      />
-                      <label :for="category.name">{{ category.name }}</label>
-                    </h4>
-                    <ul class="list-group list-group-flush">
+              <div class="col">
+                <div class="card p-4">
+                  <h3 class="card-title mb-2">
+                    To Fold
+                  </h3>
+                  <hr class="my-3" />
+                  <form v-on:submit.prevent="updateStatusToCreated()">
+                    <div v-for="category in categories">
                       <div
-                        v-for="item in filterBy(
-                          itemsFold,
-                          category.name,
-                          'category_name'
-                        )"
+                        v-if="
+                          filterBy(itemsFold, category.name, 'category_name')
+                            .length
+                        "
                       >
-                        <li class="list-group-item">
-                          {{ item.name }}
-                        </li>
+                        <div class="card">
+                          <h4 class="card-header">
+                            <input
+                              type="checkbox"
+                              :id="category.id"
+                              :value="category.id"
+                              v-model="categoryIds"
+                            />
+                            <label :for="category.name">{{
+                              category.name
+                            }}</label>
+                          </h4>
+                          <ul class="list-group list-group-flush">
+                            <div
+                              v-for="item in filterBy(
+                                itemsFold,
+                                category.name,
+                                'category_name'
+                              )"
+                            >
+                              <li class="list-group-item">
+                                {{ item.name }}
+                              </li>
+                            </div>
+                          </ul>
+                        </div>
                       </div>
-                    </ul>
-                  </div>
+                    </div>
+                    <input type="submit" class="bt btn-primary" value="Done" />
+                  </form>
                 </div>
               </div>
-              <input type="submit" class="bt btn-primary" value="Done" />
-            </form>
+            </div>
           </div>
         </div>
       </div>
