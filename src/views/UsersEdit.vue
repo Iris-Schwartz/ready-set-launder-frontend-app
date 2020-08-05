@@ -3,7 +3,8 @@
     <div id="content">
       <div class="container">
         <div class="card">
-          <h4>User Information</h4>
+          <h4 class="p-2">User Information</h4>
+          <hr class="mt-0" />
           <p>Username: {{ user.username }}</p>
           <p>Email: {{ user.email }}</p>
           <button
@@ -55,70 +56,85 @@
               </div>
             </div>
           </div>
-          <button v-on:click="destroyUser()">Delete Account</button>
+          <button class="btn btn-tertiary" v-on:click="destroyUser()">
+            Delete Account
+          </button>
         </div>
 
         <div class="card">
-          <h4>Clothing Inventory</h4>
-          <select v-model="categoryFilter">
-            <option value="">All Categories</option>
-            <option v-for="category in categories" :value="category.name">{{
-              category.name
-            }}</option>
-          </select>
-          <div
-            v-for="item in orderBy(
-              filterBy(items, categoryFilter, 'category_name'),
-              'name'
-            )"
-          >
-            {{ item.name }}
-            <button
-              class="btn btn-primary"
-              data-toggle="modal"
-              data-target=".item-modal-lg"
-              v-on:click="currentItem = item"
-            >
-              Update
-            </button>
-            <div
-              class="modal fade item-modal-lg"
-              tabindex="-1"
-              role="dialog"
-              aria-labelledby="myLargeModalLabel"
-              aria-hidden="true"
-            >
-              <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button
-                      type="button"
-                      class="close"
-                      data-dismiss="modal"
-                      aria-label="Close"
-                    >
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <form v-on:submit.prevent="editItem(currentItem)">
-                    <div class="form-group">
-                      <div class="modal-body">
-                        <label>Name: </label>
-                        <input
-                          type="text"
-                          class="form-control"
-                          v-model="currentItem.name"
-                        />
+          <h4 class="p-2">
+            Clothing Inventory
+          </h4>
+          <hr class="mt-0" />
+          <div class="card">
+            <h4 class="card-header">
+              <select v-model="categoryFilter">
+                <option value="">All Categories</option>
+                <option v-for="category in categories" :value="category.name">{{
+                  category.name
+                }}</option>
+              </select>
+            </h4>
+            <ul class="list-group">
+              <div
+                v-for="item in orderBy(
+                  filterBy(items, categoryFilter, 'category_name'),
+                  'name'
+                )"
+              >
+                <li class="list-group-item">
+                  {{ item.name }}
+                  <button
+                    class="btn btn-primary"
+                    data-toggle="modal"
+                    data-target=".item-modal-lg"
+                    v-on:click="currentItem = item"
+                  >
+                    Update
+                  </button>
+                  <div
+                    class="modal fade item-modal-lg"
+                    tabindex="-1"
+                    role="dialog"
+                    aria-labelledby="myLargeModalLabel"
+                    aria-hidden="true"
+                  >
+                    <div class="modal-dialog modal-lg">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button
+                            type="button"
+                            class="close"
+                            data-dismiss="modal"
+                            aria-label="Close"
+                          >
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <form v-on:submit.prevent="editItem(currentItem)">
+                          <div class="form-group">
+                            <div class="modal-body">
+                              <label>Name: </label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                v-model="currentItem.name"
+                              />
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <input type="submit" class="btn" value="Submit" />
+                          </div>
+                        </form>
                       </div>
                     </div>
-                    <div class="modal-footer">
-                      <input type="submit" class="btn" value="Submit" />
-                    </div>
-                  </form>
-                </div>
+                  </div>
+                  <button v-on:click="destroyItem(item)" class="btn">
+                    Delete
+                  </button>
+                </li>
               </div>
-            </div>
-            <button v-on:click="destroyItem(item)" class="btn">Delete</button>
+            </ul>
           </div>
         </div>
       </div>

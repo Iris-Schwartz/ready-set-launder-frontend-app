@@ -1,35 +1,18 @@
 <template>
   <div id="app">
-    <!-- <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <div v-if="!isLoggedIn()">
-        <router-link to="/signup">Signup</router-link> |
-        <router-link to="/login">Login</router-link>
-      </div>
-      <div v-if="isLoggedIn()">
-        <router-link to="/items/new">Ready! |</router-link>
-        <router-link to="/items">Set! |</router-link>
-        <router-link to="/items/launder">Launder! |</router-link>
-        <router-link to="/logout">Logout |</router-link>
-        <router-link to="/users/me/edit">Account</router-link>
-      </div>
-    </div> -->
-
-    <!-- ======== @Region: #header ======== -->
     <div id="header">
       <div data-toggle="sticky">
         <!--Header & Branding region-->
         <div class="header">
-          <!-- all direct children of the .header-inner element will be vertically aligned with each other you can override all the behaviours using the flexbox utilities (flexbox.html) All elements with .header-brand & .header-block-flex wrappers will automatically be aligned inline & vertically using flexbox, this can be overridden using the flexbox utilities (flexbox.htm) Use .header-block to stack elements within on small screen & "float" on larger screens use .order-first or/and .order-last classes to make an element show first or last within .header-inner or .headr-block elements -->
           <div class="header-inner container">
             <!--branding/logo -->
             <div class="header-brand">
-              <a class="header-brand-text" href="index.html" title="Home">
+              <router-link class="header-brand-text" to="/" title="Home">
                 <h1 class="h2">
                   <span class="header-brand-text-alt"></span
                   >ReadySetLaunder<span class="header-brand-text-alt"></span>
                 </h1>
-              </a>
+              </router-link>
               <div class="header-divider d-none d-lg-block"></div>
             </div>
 

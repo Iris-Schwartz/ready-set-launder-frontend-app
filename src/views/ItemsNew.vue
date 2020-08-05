@@ -22,10 +22,16 @@
               <div class="form-group">
                 <div class="col-md-12 text-sm text-uppercase">Category</div>
                 <div class="col-md-4 mb-3">
-                  <select name="categories" id="categories" v-model="categoryId">
-                    <option v-for="category in categories" :value="category.id">{{
-                      category.name
-                    }}</option>
+                  <select
+                    name="categories"
+                    id="categories"
+                    v-model="categoryId"
+                  >
+                    <option
+                      v-for="category in categories"
+                      :value="category.id"
+                      >{{ category.name }}</option
+                    >
                   </select>
                 </div>
               </div>
@@ -101,7 +107,7 @@
                   </div>
                 </div>
               </div>
-              <input type="submit" class="bt btn-primary" value="Submit" />
+              <input type="submit" class="btn btn-primary" value="Submit" />
             </form>
           </div>
         </div>
