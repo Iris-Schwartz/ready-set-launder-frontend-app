@@ -4,7 +4,7 @@
       <div class="container">
         <div class="card p-4">
           <h2 class="card-title mb-2">
-            Add Item to Clothing Inventory!
+            Ready: Add Items to Clothing Inventory!
           </h2>
           <hr class="my-3" />
           <ul>
@@ -158,6 +158,7 @@ export default {
         .post("/api/items", params)
         .then((response) => {
           console.log(response.data);
+          this.$router.push("/items");
         })
         .catch((error) => {
           this.errors = error.response.data.errors;

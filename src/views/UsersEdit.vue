@@ -3,7 +3,7 @@
     <div id="content">
       <div class="container">
         <div class="card p-4">
-          <h4 class="card-title mb-2">User Information</h4>
+          <h2 class="card-title mb-2">User Information</h2>
           <hr class="mt-0" />
           <p>Username: {{ user.username }}</p>
           <p>Email: {{ user.email }}</p>
@@ -74,9 +74,9 @@
         </div>
 
         <div class="card p-4">
-          <h4 class="card-title mb-2">
+          <h2 class="card-title mb-2">
             Clothing Inventory
-          </h4>
+          </h2>
           <hr class="mt-0" />
           <div class="card">
             <h4 class="card-header">
@@ -135,7 +135,13 @@
                             </div>
                           </div>
                           <div class="modal-footer">
-                            <input type="submit" class="btn" value="Submit" />
+                            <input
+                              type="submit"
+                              class="btn btn-primary"
+                              data-dismiss="modal"
+                              aria-label="Close"
+                              value="Submit"
+                            />
                           </div>
                         </form>
                       </div>

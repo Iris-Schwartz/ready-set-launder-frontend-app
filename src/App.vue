@@ -53,7 +53,7 @@
                   <div v-if="!isLoggedIn()">
                     <li class="nav-item">
                       <router-link to="/signup" class="nav-link"
-                        >Signup</router-link
+                        >Sign Up</router-link
                       >
                     </li>
                     <li class="nav-item">

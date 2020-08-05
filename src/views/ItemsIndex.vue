@@ -4,7 +4,7 @@
       <div class="container">
         <div class="card p-4">
           <h2 class="card-title mb-2">
-            Select Items to Wash!
+            Set: Select Items to Wash!
           </h2>
           <hr class="my-3" />
           <form v-on:submit.prevent="updateStatus()">
