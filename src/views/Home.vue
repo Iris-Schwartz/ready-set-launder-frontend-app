@@ -1,17 +1,15 @@
 <template>
-  <div class="home">
-    <div class="page page-index-coming-soon navbar-layout-default">
-      <div id="highlighted">
-        <div
-          class="bg-white overlay overlay-inverse overlay-gradient overlay-op-9 text-center px-3 py-5 py-lg-10 flex-valign"
-          data-css='{"background-position": "right bottom"}'
-          data-toggle="full-height"
-          style="height: 948px; background-position: right bottom; background-image: url('assets/img/backgrounds/womanHappyDoingLaundry.jpg'); background-repeat: no-repeat; background-size: cover;"
-        ></div>
-      </div>
-    </div>
-  </div>
+  <div class="home"></div>
 </template>
+
+<style>
+.home {
+  height: 948px;
+  background-image: url("/assets/img/backgrounds/womanHappyDoingLaundry.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+</style>
 
 <script>
 export default {
