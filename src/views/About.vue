@@ -36,8 +36,7 @@
                 Ready
               </h3>
               <p class="text-black-50">
-                Add clothing items to account. Record wash and dry settings by
-                inspecting item care labels for wash and dry setting icons.
+                Add clothing items to account. Inspect care tags to record wash and dry setting icons.
               </p>
             </div>
             <div class="tab-pane fade w-lg-70 mx-lg-auto" id="tab-steps2">
