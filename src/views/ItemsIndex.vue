@@ -3,20 +3,20 @@
     <div id="content">
       <div class="container">
         <div class="card p-4">
-          <h2 class="card-title mb-2">
+          <h3 class="card-title mb-2">
             Set: Select Items to Wash!
-          </h2>
+          </h3>
           <hr class="my-3" />
           <form v-on:submit.prevent="updateStatus()">
             <div class="card">
-              <h4 class="card-header">
+              <h5 class="card-header">
                 <select v-model="categoryFilter">
                   <option value="">All Categories</option>
                   <option v-for="category in categories" :value="category.name">
                     {{ category.name }}
                   </option>
                 </select>
-              </h4>
+              </h5>
               <ul class="list-group">
                 <div
                   v-for="item in orderBy(

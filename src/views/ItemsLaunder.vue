@@ -3,16 +3,16 @@
     <div id="content">
       <div class="container">
         <div class="card p-4">
-          <h2 class="card-title mb-2">
+          <h3 class="card-title mb-2">
             Launder: Track the Process!
-          </h2>
+          </h3>
           <hr class="my-3" />
           <div class="row">
             <div class="col-lg-4">
               <div class="card p-4">
-                <h3 class="card-title mb-2">
+                <h4 class="card-title mb-2">
                   To Wash
-                </h3>
+                </h4>
                 <hr class="my-3" />
                 <form v-on:submit.prevent="updateStatusToDry()">
                   <div v-for="washSetting in washSettings">
@@ -26,7 +26,7 @@
                       "
                     >
                       <div class="card">
-                        <h4 class="card-header">
+                        <h5 class="card-header">
                           <input
                             type="checkbox"
                             :id="washSetting.id"
@@ -36,7 +36,7 @@
                           <label :for="washSetting.name">{{
                             washSetting.name
                           }}</label>
-                        </h4>
+                        </h5>
                         <ul class="list-group list-group-flush">
                           <div
                             v-for="item in filterBy(
@@ -59,9 +59,9 @@
             </div>
             <div class="col-lg-4">
               <div class="card p-4">
-                <h3 class="card-title mb-2">
+                <h4 class="card-title mb-2">
                   To Dry
-                </h3>
+                </h4>
                 <hr class="my-3" />
                 <form v-on:submit.prevent="updateStatusToFold()">
                   <div v-for="drySetting in drySettings">
@@ -72,7 +72,7 @@
                       "
                     >
                       <div class="card">
-                        <h4 class="card-header">
+                        <h5 class="card-header">
                           <input
                             type="checkbox"
                             :id="drySetting.id"
@@ -82,7 +82,7 @@
                           <label :for="drySetting.name">{{
                             drySetting.name
                           }}</label>
-                        </h4>
+                        </h5>
                         <ul class="list-group list-group-flush">
                           <div
                             v-for="item in filterBy(
@@ -105,9 +105,9 @@
             </div>
             <div class="col-lg-4">
               <div class="card p-4">
-                <h3 class="card-title mb-2">
+                <h4 class="card-title mb-2">
                   To Fold
-                </h3>
+                </h4>
                 <hr class="my-3" />
                 <form v-on:submit.prevent="updateStatusToCreated()">
                   <div v-for="category in categories">
@@ -118,7 +118,7 @@
                       "
                     >
                       <div class="card">
-                        <h4 class="card-header">
+                        <h5 class="card-header">
                           <input
                             type="checkbox"
                             :id="category.id"
@@ -128,7 +128,7 @@
                           <label :for="category.name">{{
                             category.name
                           }}</label>
-                        </h4>
+                        </h5>
                         <ul class="list-group">
                           <div
                             v-for="item in filterBy(
@@ -155,6 +155,12 @@
     </div>
   </div>
 </template>
+
+<style>
+h4 {
+  color: #55a79a;
+}
+</style>
 
 <script>
 import axios from "axios";

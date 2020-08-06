@@ -3,7 +3,7 @@
     <div id="content">
       <div class="container">
         <div class="card p-4">
-          <h2 class="card-title mb-2">User Information</h2>
+          <h3 class="card-title mb-2">User Information</h3>
           <hr class="mt-0" />
           <p>Username: {{ user.username }}</p>
           <p>Email: {{ user.email }}</p>
@@ -62,8 +62,6 @@
                     <input
                       type="submit"
                       class="btn btn-primary"
-                      data-dismiss="modal"
-                      aria-label="Close"
                       value="Submit"
                     />
                   </div>
@@ -74,19 +72,19 @@
         </div>
 
         <div class="card p-4">
-          <h2 class="card-title mb-2">
+          <h3 class="card-title mb-2">
             Clothing Inventory
-          </h2>
+          </h3>
           <hr class="mt-0" />
           <div class="card">
-            <h4 class="card-header">
+            <h5 class="card-header">
               <select v-model="categoryFilter">
                 <option value="">All Categories</option>
                 <option v-for="category in categories" :value="category.name">{{
                   category.name
                 }}</option>
               </select>
-            </h4>
+            </h5>
             <ul class="list-group">
               <div
                 v-for="item in orderBy(
@@ -138,8 +136,6 @@
                             <input
                               type="submit"
                               class="btn btn-primary"
-                              data-dismiss="modal"
-                              aria-label="Close"
                               value="Submit"
                             />
                           </div>
@@ -164,7 +160,11 @@
   </div>
 </template>
 
-<style></style>
+<style>
+label {
+  margin-right: 10px;
+}
+</style>
 
 <script>
 import axios from "axios";

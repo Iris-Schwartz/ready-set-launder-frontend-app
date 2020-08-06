@@ -14,6 +14,7 @@
                 </h1>
               </router-link>
               <div class="header-divider d-none d-lg-block"></div>
+              <div class="header-slogan d-none d-lg-block">Laundry Decoder and Tracker</div>
             </div>
 
             <div class="navbar navbar-expand-md navbar-static-top">
@@ -23,6 +24,13 @@
                 <ul
                   class="nav navbar-nav navbar-nav-stretch float-lg-right dropdown-effect-fade"
                 >
+                  <div>
+                    <li class="nav-item">
+                      <router-link to="/about" class="nav-link"
+                        >About</router-link
+                      >
+                    </li>
+                  </div>
                   <div v-if="isLoggedIn()">
                     <li class="nav-item">
                       <router-link to="/items/new" class="nav-link"

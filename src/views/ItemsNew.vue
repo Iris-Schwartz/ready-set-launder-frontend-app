@@ -3,9 +3,9 @@
     <div id="content">
       <div class="container">
         <div class="card p-4">
-          <h2 class="card-title mb-2">
+          <h3 class="card-title mb-2">
             Ready: Add Items to Clothing Inventory!
-          </h2>
+          </h3>
           <hr class="my-3" />
           <ul>
             <li v-for="error in errors" class="text-danger">{{ error }}</li>
@@ -54,7 +54,9 @@
                                 :id="washSetting.id"
                                 :value="washSetting.id"
                               />
-                              {{ washSetting.name }}
+                              <label for="washSetting.id">{{
+                                washSetting.name
+                              }}</label>
                             </h6>
                           </div>
                           <div class="pos-relative">
@@ -79,15 +81,13 @@
                   <div class="row text-center mb-4">
                     <div class="col-sm-4" v-for="drySetting in drySettings">
                       <div class="form-group">
-                        <div class="card product-card overlay-hover">
-                          <div
-                            class="overlay-hover-content overlay-op-7 product-card-hover-tools"
-                          >
+                        <div class="card overlay-hover">
+                          <div class="overlay-hover-content overlay-op-7">
                             <h6 class="text-white">
                               <input
                                 type="radio"
                                 v-model="drySettingId"
-                                :id="drySetting.id"
+                                :id="drySetting"
                                 :value="drySetting.id"
                               />
                               {{ drySetting.name }}
@@ -115,6 +115,8 @@
     </div>
   </div>
 </template>
+
+<style></style>
 
 <script>
 import axios from "axios";

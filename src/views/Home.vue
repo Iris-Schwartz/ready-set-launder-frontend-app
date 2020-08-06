@@ -1,13 +1,15 @@
 <template>
-  <div class="home"></div>
+  <div class="home">
+    <div class="content">
+      <img src="/assets/img/backgrounds/womanHappyDoingLaundry.jpg" />
+    </div>
+  </div>
 </template>
 
 <style>
-.home {
-  height: 948px;
-  background-image: url("/assets/img/backgrounds/womanHappyDoingLaundry.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
+img {
+  width: 100%;
+  height: auto;
 }
 </style>
 
